@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Balloon Order page - Welcome and choose a Balloon</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to our Balloon Shop App</h1>
+</header>
+<main>
+    <h2>Choose balloon color:</h2>
+    <form th:action="@{/}" method="post">
+        <input type="radio" name="color" value="Red Balloon"> Red Balloon<br/>
+        <input type="radio" name="color" value="Green Balloon"> Green Balloon<br/>
+        <input type="radio" name="color" value="Yellow Balloon"> Yellow Balloon<br/>
+        <input type="radio" name="color" value="Blue Balloon"> Blue Balloon<br/>
+
+        <br/>
+        <input type="submit" value="Submit">
+    </form>
+    <br/>
+        <h3>Balloons</h3><br/>
+
+    <p style="color:red;"><th:block th:if="${hasError}"><th:block th:text="${error}"></th:block></th:block></p><br/>
+    <th:block th:if="${balloons}">
+        <uL>
+        <th:block th:each="balloon : ${balloons}">
+            <li><th:block th:text="${balloon.getName()}"></th:block> - <th:block th:text="${balloon.getDescription()}"></th:block> - <th:block th:text="${balloon.getManufacturer().getName()}"></th:block></li>
+            <a th:href="@{'/balloons/edit-form/{id}' (id=${balloon.getId()})}">Edit</a>
+            <form th:method="delete" th:action="@{'/balloons/delete/{id}' (id=${balloon.getId()})}">
+                <button type="submit">Delete</button>
+            </form>
+        </th:block>
+        </uL>
+    </th:block>
+    <br/>
+    <th:block><a href="/balloons/add-form">Add new balloon</a></th:block><br/>
+</main>
+</body>
+</html>

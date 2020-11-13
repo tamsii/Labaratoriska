@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Add balloon page</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Add or edit balloon</h1>
+</header>
+<main>
+    <form th:action="@{/balloons/add}" th:method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" th:value="(${balloon} != null ? ${balloon.getName()} : '')" placeholder="Enter balloon name"><br/>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" th:value="(${balloon} != null ? ${balloon.getDescription()} : '')" placeholder="Enter balloon description"><br/>
+        <label for="manufacturer"></label>
+        <select type="text" id="manufacturer" name="manufacturer" placeholder="Select balloon manufacturer">
+            <option th:if="${balloon} != null" th:selected="${balloon.getManufacturer() != null && balloon.getManufacturer().getId() == man.getId()}"
+                    th:each="man : ${manufacturers}" th:text="${man.getName()}" th:value="${man.getId()}"></option>
+            <option th:if="${balloon} == null" th:each="man : ${manufacturers}" th:text="${man.getName()}" th:value="${man.getId()}"></option>
+        </select>
+        <br/>
+        <br/>
+        <input type="submit" value="Save">
+        <a href="/balloons">Back</a>
+    </form>
+</main>
+</body>
+</html>

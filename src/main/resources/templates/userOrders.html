@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Search Orders page</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Search orders</h1>
+</header>
+<main>
+
+    <th:block th:if="${orders}">
+        <h3>All orders</h3>
+        <ul>
+            <th:block th:each="order : ${orders}">
+                <li><th:block th:text="${order.getClientName()}"></th:block> - <th:block th:text="${order.getClientAddress()}"></th:block></li>
+            </th:block>
+        </ul>
+    </th:block>
+
+</main>
+</body>
+</html>
