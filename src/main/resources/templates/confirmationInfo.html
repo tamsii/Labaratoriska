@@ -37,11 +37,11 @@
         </tr>
         <tr>
             <td><b>Client IP Address</b></td>
-            <td th:text="${ip}"></td>
+            <td th:text="${ipAddress}"></td>
         </tr>
         <tr>
             <td><b>Client Browser</b></td>
-            <td th:text="${client}"></td>
+            <td th:text="${clientAgent}"></td>
         </tr>
         <tr>
             <td><b>Balloon Color </b></td>
@@ -53,7 +53,7 @@
         </tr>
     </table>
     <div>
-        <form th:action="@{/ConfirmationInfoServlet}" method="post">
+        <form th:action="@{/ConfirmationInfo}" method="post">
             <input type="submit" value="Log Out">
         </form>
 

@@ -14,7 +14,6 @@ public class DataHolder {
 
     public static List<Balloon> balloons = new ArrayList<>();
     public static List<Manufacturer> manufacturers = new ArrayList<>();
-    //plus
     public static List<Order> orders = new ArrayList<>();
 
     @PostConstruct

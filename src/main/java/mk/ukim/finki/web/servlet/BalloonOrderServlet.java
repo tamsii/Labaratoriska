@@ -42,8 +42,8 @@ public class BalloonOrderServlet extends HttpServlet {
             String color = (String)req.getSession().getAttribute("color");
             String size = (String)req.getSession().getAttribute("size");
 
-            context.setVariable("size", req.getSession().getAttribute("size"));
-            context.setVariable("color", req.getSession().getAttribute("color"));
+            context.setVariable("size", size);
+            context.setVariable("color", color);
 
 
             springTemplateEngine.process("deliveryInfo.html", context, resp.getWriter());

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Confirmation-Info-Servlet", urlPatterns = "/ConfirmationInfo")
+@WebServlet(name = "ConfirmationInfoServlet", urlPatterns = "/ConfirmationInfo")
 public class ConfirmationInfoServlet extends HttpServlet {
 
     private final SpringTemplateEngine springTemplateEngine;
@@ -35,5 +35,11 @@ public class ConfirmationInfoServlet extends HttpServlet {
 
         springTemplateEngine.process("confirmationInfo.html", context, resp.getWriter());
 
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+            req.getSession().invalidate();
+            resp.sendRedirect("/orders");
     }
 }

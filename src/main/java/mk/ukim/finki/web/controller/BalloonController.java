@@ -81,13 +81,13 @@ public class BalloonController {
         return "userOrders";
     }
 
-    @GetMapping("/select")
+    @GetMapping("/selectBalloon")
     public String emptySelect(Model model){
         return "redirect:/balloons?error=No+balloon+selected";
 
     }
 
-    @PostMapping("/select")
+    @PostMapping("/selectBalloon")
     public String selectBalloon(@RequestParam(required = false) String color, Model model, HttpServletRequest request){
         if (color == null) {
             return "redirect:/balloons";

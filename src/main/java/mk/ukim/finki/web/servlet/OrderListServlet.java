@@ -39,11 +39,8 @@ public class OrderListServlet extends HttpServlet {
 
         if (searchAddress == null || searchName == null || searchAddress.isEmpty() || searchName.isEmpty()) {
             req.getSession().removeAttribute("result");
-            resp.sendRedirect("/findOrders.html");
+            resp.sendRedirect("/userOrders.html");
         }
-
-        // TODO:
-        // When find it once it does not reset the earlier session settings. FIX!
 
         Order order = null;
         try {
@@ -55,6 +52,6 @@ public class OrderListServlet extends HttpServlet {
             springTemplateEngine.process("userOrders.html", context, resp.getWriter());
         }
         req.getSession().setAttribute("result", order);
-        resp.sendRedirect("/orders");
+        resp.sendRedirect("/");
     }
 }
